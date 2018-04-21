@@ -19,7 +19,7 @@ class Timer extends Component {
   formatTime(totalSeconds) {
     const secs = totalSeconds % 60; // Get seconds place
     const mins = Math.floor(totalSeconds / 60); // Get minutes place
-    return `${mins}:${secs < 10 ? `0${secs}` : secs}`; // Format time
+    return `${mins < 10 ? `0${mins}` : mins}:${secs < 10 ? `0${secs}` : secs}`; // Format time
   }
 
   updateTime() {
@@ -55,11 +55,11 @@ class Timer extends Component {
     return (
       <div className="timer">
         <div className="timer-display">
-          {this.formatTime(this.state.totalTime)}
+          <span className="time">{this.formatTime(this.state.totalTime)}</span>
         </div>
         <div className="controls">
-          <button onClick={this.startStopTimer}>Start/Stop</button>
-          <button onClick={this.resetTimer}>Reset</button>
+          <button className="startButton" onClick={this.startStopTimer}>Start</button>
+          <button className="resetButton" onClick={this.resetTimer}>Reset</button>
         </div>
       </div>
     );
@@ -106,10 +106,12 @@ class App extends Component {
     return (
       <div className="App">
         <header className="nav">
-          <h1>Triple Bar Coffee</h1>
+          <h1>Brew Time</h1>
         </header>
-        <Directions />
-        <Timer />
+        <div className="container">
+          <Timer />
+          <Directions />
+        </div>
       </div>
     );
   }
