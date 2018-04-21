@@ -40,14 +40,28 @@ class Timer extends Component {
   }
 
   startStopTimer() {
+
+
+
     // If the timer is not running,
     // start it and update the time every second
     if (!this.state.isRunning) {
+
+      // Modify button CSS
+      let button = document.getElementsByClassName("startButton")[0];
+      button.innerText = "Stop";
+      button.className = "stopButton";
+
       this.setState({ timerId: setInterval(this.updateTime, 1000) });
       this.setState({ isRunning: true });
     } else { // Otherwise, stop the timer
       clearInterval(this.state.timerId);
       this.setState({ isRunning: false });
+
+      // Modify button CSS
+      let button = document.getElementsByClassName("stopButton")[0];
+      button.innerText = "Start";
+      button.className = "startButton";
     }
   }
 
