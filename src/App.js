@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 
+// Timer component
 class Timer extends Component {
   constructor() {
     super();
@@ -10,18 +11,19 @@ class Timer extends Component {
   }
 
   state = {
-    totalTime: 0,
-    isRunning: false,
-    timerId: undefined
+    totalTime: 0, // Total seconds elapsed
+    isRunning: false, // Status of timer
+    timerId: undefined // ID used as input to clearInterval()
   };
 
   formatTime(totalSeconds) {
-    const secs = totalSeconds % 60;
-    const mins = Math.floor(totalSeconds / 60);
-    return `${mins}:${secs < 10 ? `0${secs}` : secs}`;
+    const secs = totalSeconds % 60; // Get seconds place
+    const mins = Math.floor(totalSeconds / 60); // Get minutes place
+    return `${mins}:${secs < 10 ? `0${secs}` : secs}`; // Format time
   }
 
   updateTime() {
+    // Increment the time by 1
     this.setState(prevState => {
       let newTime = prevState.totalTime + 1;
       return { totalTime: newTime };
@@ -29,6 +31,7 @@ class Timer extends Component {
   }
 
   resetTimer() {
+    // If the timer is not running, reset the time to 0
     if (!this.state.isRunning) {
       this.setState(prevState => {
         return { totalTime: 0 };
@@ -37,10 +40,12 @@ class Timer extends Component {
   }
 
   startStopTimer() {
+    // If the timer is not running,
+    // start it and update the time every second
     if (!this.state.isRunning) {
       this.setState({ timerId: setInterval(this.updateTime, 1000) });
       this.setState({ isRunning: true });
-    } else {
+    } else { // Otherwise, stop the timer
       clearInterval(this.state.timerId);
       this.setState({ isRunning: false });
     }
@@ -59,6 +64,7 @@ class Timer extends Component {
   }
 }
 
+// Directions component
 class Directions extends Component {
   render() {
     return (
@@ -73,6 +79,7 @@ class Directions extends Component {
   }
 }
 
+// Step component
 class Step extends Component {
   render() {
     return (
@@ -83,6 +90,8 @@ class Step extends Component {
     );
   }
 }
+
+// Application
 class App extends Component {
   constructor() {
     super();
