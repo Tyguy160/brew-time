@@ -53,7 +53,7 @@ class Timer extends Component {
 
   render() {
     return (
-      <div>
+      <div className="timer">
         <div className="timer-display">
           {this.formatTime(this.state.totalTime)}
         </div>
@@ -68,9 +68,11 @@ class Timer extends Component {
 class Directions extends Component {
   render() {
     return (
-      <div>
+      <div className="directions">
         <h3>Directions</h3>
-        <ul>
+        <ul className="instructions">
+          <Step />
+          <Step />
           <Step />
           <Step />
         </ul>
@@ -83,7 +85,7 @@ class Directions extends Component {
 class Step extends Component {
   render() {
     return (
-      <li>
+      <li className="lineItem">
         <span>Step instructions are here</span>
         <input type="checkbox" />
       </li>
@@ -101,7 +103,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header>
+        <header className="nav">
           <h1>Triple Bar Coffee</h1>
         </header>
         <Directions />
