@@ -57,8 +57,10 @@ class Timer extends Component {
         <div className="timer-display">
           {this.formatTime(this.state.totalTime)}
         </div>
-        <button onClick={this.startStopTimer}>Start/Stop</button>
-        <button onClick={this.resetTimer}>Reset</button>
+        <div className="controls">
+          <button onClick={this.startStopTimer}>Start/Stop</button>
+          <button onClick={this.resetTimer}>Reset</button>
+        </div>
       </div>
     );
   }

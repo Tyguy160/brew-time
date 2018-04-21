@@ -7,6 +7,7 @@
   height: 100vh;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: 80px 1fr;
+  font-family: "Montserrat", sans-serif;
 }
 
 .nav {
@@ -41,4 +42,21 @@
   grid-column: 3 / -1;
   background: #c4c4c4;
   margin: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: minmax(100px 70%) minmax(50px; 30%);
+}
+
+.timer-display {
+  grid-column: 1 / -1;
+  border: solid red 1px;
+}
+
+.controls {
+  grid-column: 1 / -1;
+  border: solid blue 1px;
+}
+
+button {
+  font-family: "Montserrat", sans-serif;
 }
