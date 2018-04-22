@@ -13,19 +13,25 @@ class Timer extends Component {
   state = {
     totalTime: 0, // Total seconds elapsed
     isRunning: false, // Status of timer
-    timerId: undefined // ID used as input to clearInterval()
+    timerId: undefined, // ID used as input to clearInterval()
+    time: undefined // Clock time of timer start
   };
 
   formatTime(totalSeconds) {
-    const secs = totalSeconds % 60; // Get seconds place
-    const mins = Math.floor(totalSeconds / 60); // Get minutes place
-    return `${mins < 10 ? `0${mins}` : mins}:${secs < 10 ? `0${secs}` : secs}`; // Format time
+    // Get seconds place (and milliseconds via toFixed(n))
+    const secs = (totalSeconds % 60).toFixed(2);
+    // Get minutes place
+    const mins = Math.floor(totalSeconds / 60);
+    // Format time
+    return `${mins < 10 ? `0${mins}` : mins}:${secs < 10 ? `0${secs}` : secs}`;
   }
 
   updateTime() {
-    // Increment the time by 1
+    // Grab a new date and time, then get the difference from the old time
     this.setState(prevState => {
-      let newTime = prevState.totalTime + 1;
+      let newDate = new Date();
+      let newTime = (newDate.getTime() - prevState.time)/1000;
+      // Update the total time with the difference
       return { totalTime: newTime };
     });
   }
@@ -40,19 +46,20 @@ class Timer extends Component {
   }
 
   startStopTimer() {
-
-
-
     // If the timer is not running,
     // start it and update the time every second
     if (!this.state.isRunning) {
+
+      // Update the class time variable with the current time
+      let startDate = new Date();
+      this.setState({time: startDate.getTime()});
 
       // Modify button CSS
       let button = document.getElementsByClassName("startButton")[0];
       button.innerText = "Stop";
       button.className = "stopButton";
 
-      this.setState({ timerId: setInterval(this.updateTime, 1000) });
+      this.setState({ timerId: setInterval(this.updateTime, 10) });
       this.setState({ isRunning: true });
     } else { // Otherwise, stop the timer
       clearInterval(this.state.timerId);
