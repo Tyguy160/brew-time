@@ -8,13 +8,17 @@ class Timer extends Component {
     this.startStopTimer = this.startStopTimer.bind(this);
     this.updateTime = this.updateTime.bind(this);
     this.resetTimer = this.resetTimer.bind(this);
+    this.changeButton = this.changeButton.bind(this);
+    this.startTimer = this.startTimer.bind(this);
+    this.stopTimer = this.stopTimer.bind(this);
   }
 
   state = {
     totalTime: 0, // Total seconds elapsed
     isRunning: false, // Status of timer
     timerId: undefined, // ID used as input to clearInterval()
-    time: undefined // Clock time of timer start
+    time: undefined, // Clock time of timer start
+    initialSecs: 0
   };
 
   formatTime(totalSeconds) {
@@ -31,13 +35,26 @@ class Timer extends Component {
     this.setState(prevState => {
       let newDate = new Date();
       let newTime = (newDate.getTime() - prevState.time)/1000;
+
       // Update the total time with the difference
       return { totalTime: newTime };
     });
   }
 
+  // Set updateTime to run continuously
+  startTimer() {
+    this.setState({ timerId: setInterval(this.updateTime, 10) });
+    this.setState({ isRunning: true });
+  }
+
+  // Set updateTime to stop running
+  stopTimer() {
+    clearInterval(this.state.timerId);
+    this.setState({ isRunning: false });
+  }
+
+  // If the timer is not running, reset the time to 0
   resetTimer() {
-    // If the timer is not running, reset the time to 0
     if (!this.state.isRunning) {
       this.setState(prevState => {
         return { totalTime: 0 };
@@ -45,30 +62,51 @@ class Timer extends Component {
     }
   }
 
-  startStopTimer() {
-    // If the timer is not running,
-    // start it and update the time every second
+  changeButton() {
     if (!this.state.isRunning) {
-
-      // Update the class time variable with the current time
-      let startDate = new Date();
-      this.setState({time: startDate.getTime()});
-
-      // Modify button CSS
+      // Modify start/stop button CSS
       let button = document.getElementsByClassName("startButton")[0];
       button.innerText = "Stop";
       button.className = "stopButton";
 
-      this.setState({ timerId: setInterval(this.updateTime, 10) });
-      this.setState({ isRunning: true });
-    } else { // Otherwise, stop the timer
-      clearInterval(this.state.timerId);
-      this.setState({ isRunning: false });
-
-      // Modify button CSS
+      // Disable reset button
+      document.getElementsByClassName("resetButton")[0].disabled = true;
+    }
+    else {
+      // Modify start/stop button CSS
       let button = document.getElementsByClassName("stopButton")[0];
       button.innerText = "Start";
       button.className = "startButton";
+
+      // Enable reset button
+      document.getElementsByClassName("resetButton")[0].disabled = false;
+    }
+  }
+
+
+
+  startStopTimer() {
+    // If the timer is not running, but has been
+    if (!this.state.isRunning && this.state.totalTime !== 0) {
+
+      this.changeButton();
+      this.startTimer();
+
+    }
+    // If the timer isn't running, but has never
+    else if(!this.state.isRunning) {
+      // Update the class time variable with the current time
+      let startDate = new Date();
+      this.setState({time: startDate.getTime()});
+
+      this.changeButton();
+      this.startTimer();
+    }
+    // Otherwise, stop the timer
+    else {
+      this.stopTimer();
+
+      this.changeButton();
     }
   }
 
