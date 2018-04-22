@@ -131,12 +131,13 @@ class Directions extends Component {
     return (
       <div className="directions">
         <h3>Directions</h3>
-        <ul className="instructions">
+        <div className="instructions">
           <Step />
           <Step />
           <Step />
           <Step />
-        </ul>
+          <Step />
+        </div>
       </div>
     );
   }
@@ -146,10 +147,10 @@ class Directions extends Component {
 class Step extends Component {
   render() {
     return (
-      <li className="lineItem">
+      <div className="lineItem">
         <span>Step instructions are here</span>
         <input type="checkbox" />
-      </li>
+      </div>
     );
   }
 }

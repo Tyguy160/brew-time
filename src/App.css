@@ -10,12 +10,21 @@
   font-family: "Montserrat", sans-serif;
 }
 .nav {
-  background: #999999;
+  background: rgb(51, 51, 51);
+  color: #ffffff;
   text-align: center;
+  box-shadow: 8px 9px 27px -2px rgba(0, 0, 0, 0.86);
 }
 
 h1 {
-  font-weight: 300;
+  font-weight: 400;
+}
+
+h3 {
+  align-self: center;
+  justify-self: center;
+  font-weight: 500;
+  font-size: 24px;
 }
 
 .container {
@@ -45,7 +54,7 @@ h1 {
   height: 300px;
   border-radius: 50%;
 
-  background-color: #4f4f4f;
+  background-color: rgb(51, 51, 51);
   color: white;
 
   box-shadow: 8px 9px 27px -2px rgba(0, 0, 0, 0.86);
@@ -96,23 +105,28 @@ button {
 }
 
 .directions {
-  background: #c4c4c4;
+  background: rgb(51, 51, 51);
   margin: 20px;
+  box-shadow: 8px 9px 27px -2px rgba(0, 0, 0, 0.86);
+  color: #ffffff;
 
   display: grid;
-  /* grid-template-columns: 1fr;
-  grid-template-rows: 50px 1fr; */
+  grid-template-columns: 1fr;
+  grid-template-rows: 50px 1fr;
 }
-/* .instructions {
+
+.instructions {
   display: grid;
-  background: #c5c5c5;
-  grid-template-rows: repeat(5, 50px);
+
+  grid-template-rows: repeat(auto-fill, minmax(40px, 1fr));
+  grid-template-columns: 1fr;
+}
+
+.lineItem:nth-child(even) {
+  background: #555555;
 }
 
 .lineItem {
-  border: black;
-  background: burlywood;
-  list-style: none;
-  grid-row: 1fr;
-  margin: 5px;
-} */
+  background: #777777;
+  min-height: 40px;
+}
