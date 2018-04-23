@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
+import data from './recipes.json'
 
 // Timer component
 class Timer extends Component {
@@ -83,8 +84,6 @@ class Timer extends Component {
     }
   }
 
-
-
   startStopTimer() {
     // If the timer is not running, but has been
     if (!this.state.isRunning && this.state.totalTime !== 0) {
@@ -127,16 +126,17 @@ class Timer extends Component {
 
 // Directions component
 class Directions extends Component {
+
+  componentDidMount() {
+  }
+
   render() {
     return (
       <div className="directions">
         <h3>Directions</h3>
         <div className="instructions">
           <Step />
-          <Step />
-          <Step />
-          <Step />
-          <Step />
+          {console.log(data)}
         </div>
       </div>
     );
