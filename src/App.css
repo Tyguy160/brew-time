@@ -74,6 +74,7 @@ h3 {
 }
 
 .startButton {
+  outline: none;
   background-color: green;
   color: white;
   font-size: 24px;
@@ -81,6 +82,7 @@ h3 {
 }
 
 .stopButton {
+  outline: none;
   background-color: red;
   color: white;
   font-size: 24px;
@@ -88,6 +90,7 @@ h3 {
 }
 
 .resetButton {
+  outline: none;
   background-color: #777777;
   color: white;
   font-size: 24px;
