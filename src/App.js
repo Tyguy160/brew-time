@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
-import data from './recipes.json'
+import data from "./recipes.json";
 
 // Timer component
 class Timer extends Component {
@@ -9,7 +9,6 @@ class Timer extends Component {
     this.startStopTimer = this.startStopTimer.bind(this);
     this.updateTime = this.updateTime.bind(this);
     this.resetTimer = this.resetTimer.bind(this);
-    this.changeButton = this.changeButton.bind(this);
     this.startTimer = this.startTimer.bind(this);
     this.stopTimer = this.stopTimer.bind(this);
   }
@@ -35,7 +34,7 @@ class Timer extends Component {
     // Grab a new date and time, then get the difference from the old time
     this.setState(prevState => {
       let newDate = new Date();
-      let newTime = (newDate.getTime() - prevState.time)/1000;
+      let newTime = (newDate.getTime() - prevState.time) / 1000;
 
       // Update the total time with the difference
       return { totalTime: newTime };
@@ -63,61 +62,42 @@ class Timer extends Component {
     }
   }
 
-  changeButton() {
-    if (!this.state.isRunning) {
-      // Modify start/stop button CSS
-      let button = document.getElementsByClassName("startButton")[0];
-      button.innerText = "Stop";
-      button.className = "stopButton";
-
-      // Disable reset button
-      document.getElementsByClassName("resetButton")[0].disabled = true;
-    }
-    else {
-      // Modify start/stop button CSS
-      let button = document.getElementsByClassName("stopButton")[0];
-      button.innerText = "Start";
-      button.className = "startButton";
-
-      // Enable reset button
-      document.getElementsByClassName("resetButton")[0].disabled = false;
-    }
-  }
-
   startStopTimer() {
     // If the timer is not running, but has been
     if (!this.state.isRunning && this.state.totalTime !== 0) {
-
-      this.changeButton();
       this.startTimer();
-
     }
     // If the timer isn't running, but has never
-    else if(!this.state.isRunning) {
+    else if (!this.state.isRunning) {
       // Update the class time variable with the current time
       let startDate = new Date();
-      this.setState({time: startDate.getTime()});
+      this.setState({ time: startDate.getTime() });
 
-      this.changeButton();
       this.startTimer();
     }
     // Otherwise, stop the timer
     else {
       this.stopTimer();
-
-      this.changeButton();
     }
   }
 
   render() {
+    const { isRunning } = this.state;
     return (
       <div className="timer">
         <div className="timer-display">
           <span className="time">{this.formatTime(this.state.totalTime)}</span>
         </div>
         <div className="controls">
-          <button className="startButton" onClick={this.startStopTimer}>Start</button>
-          <button className="resetButton" onClick={this.resetTimer}>Reset</button>
+          <button
+            className={isRunning ? "stopButton" : "startButton"}
+            onClick={this.startStopTimer}
+          >
+            {isRunning ? "Stop" : "Start"}
+          </button>
+          <button className="resetButton" onClick={this.resetTimer}>
+            Reset
+          </button>
         </div>
       </div>
     );
@@ -126,9 +106,7 @@ class Timer extends Component {
 
 // Directions component
 class Directions extends Component {
-
-  componentDidMount() {
-  }
+  componentDidMount() {}
 
   render() {
     return (
