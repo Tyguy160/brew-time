@@ -44,7 +44,7 @@ h3 {
   grid-gap: 40px;
   display: grid;
   grid-template-columns: 1fr 100px;
-  grid-template-rows: minmax(100px 70%) minmax(50px; 30%);
+  grid-template-rows: minmax(100px 70%) minmax(50px, 30%);
 }
 
 .timer-display {
