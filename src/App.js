@@ -106,15 +106,14 @@ class Timer extends Component {
 
 // Directions component
 class Directions extends Component {
-  componentDidMount() {}
-
   render() {
     return (
       <div className="directions">
-        <h3>Directions</h3>
+        <h3>{data.recipes[0].name} Directions</h3>
         <div className="instructions">
-          <Step />
-          {console.log(data)}
+          {data.recipes[0].steps.map((step, i) => (
+            <Step key={i} instruction={step} active={true} />
+          ))}
         </div>
       </div>
     );
@@ -122,24 +121,23 @@ class Directions extends Component {
 }
 
 // Step component
-class Step extends Component {
-  render() {
-    return (
-      <div className="lineItem">
-        <span>Step instructions are here</span>
-        <input type="checkbox" />
-      </div>
-    );
-  }
-}
+const Step = props => {
+  const style = {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center"
+  };
+
+  return (
+    <div className="lineItem" style={style}>
+      <span>{props.instruction}</span>
+      <input type="checkbox" disabled={!props.active} />
+    </div>
+  );
+};
 
 // Application
 class App extends Component {
-  constructor() {
-    super();
-    this.state = {};
-  }
-
   render() {
     return (
       <div className="App">
