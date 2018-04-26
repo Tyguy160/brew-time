@@ -44,13 +44,17 @@ class Timer extends Component {
   // Set updateTime to run continuously
   startTimer() {
     this.setState({ timerId: setInterval(this.updateTime, 10) });
-    this.setState({ isRunning: true });
+    this.setState(prevState => ({
+      isRunning: true
+    }));
   }
 
   // Set updateTime to stop running
   stopTimer() {
     clearInterval(this.state.timerId);
-    this.setState({ isRunning: false });
+    this.setState(prevState => ({
+      isRunning: false
+    }));
   }
 
   // If the timer is not running, reset the time to 0
@@ -66,12 +70,14 @@ class Timer extends Component {
     // If the timer is not running, but has been
     if (!this.state.isRunning && this.state.totalTime !== 0) {
       this.startTimer();
+      this.setState(prevState => ({
+        time: new Date().getTime() - prevState.totalTime * 1000
+      }));
     }
     // If the timer isn't running, but has never
     else if (!this.state.isRunning) {
       // Update the class time variable with the current time
-      let startDate = new Date();
-      this.setState({ time: startDate.getTime() });
+      this.setState({ time: new Date().getTime() });
 
       this.startTimer();
     }
@@ -82,7 +88,11 @@ class Timer extends Component {
   }
 
   render() {
-    const { isRunning } = this.state;
+    const isRunning = this.state.isRunning;
+    const inactive = {
+      color: "#ABABAB",
+      "box-shadow": "none"
+    };
     return (
       <div className="timer">
         <div className="timer-display">
@@ -95,7 +105,11 @@ class Timer extends Component {
           >
             {isRunning ? "Stop" : "Start"}
           </button>
-          <button className="resetButton" onClick={this.resetTimer}>
+          <button
+            style={isRunning ? inactive : {}}
+            className="resetButton"
+            onClick={this.resetTimer}
+          >
             Reset
           </button>
         </div>
@@ -106,14 +120,38 @@ class Timer extends Component {
 
 // Directions component
 class Directions extends Component {
+  state = {
+    recipes: []
+  };
+
+  componentDidMount() {
+    let recipesToBeLoaded = data.recipes.map(recipe => {
+      const steps = recipe.steps.map(
+        (step, i) =>
+          i === 0
+            ? { instruction: step, status: "active" }
+            : { instruction: step, status: "incomplete" }
+      );
+      return { name: recipe.name, steps };
+    });
+    this.setState({ recipes: recipesToBeLoaded });
+  }
+
   render() {
+    const recipe = this.state.recipes[0];
     return (
       <div className="directions">
-        <h3>{data.recipes[0].name} Directions</h3>
+        <h3>{recipe ? recipe.steps.name : "Loading"} Directions</h3>
         <div className="instructions">
-          {data.recipes[0].steps.map((step, i) => (
-            <Step key={i} instruction={step} active={true} />
-          ))}
+          {recipe
+            ? recipe.steps.map((step, i) => (
+                <Step
+                  key={i}
+                  instruction={step.instruction}
+                  status={step.status}
+                />
+              ))
+            : "loading"}
         </div>
       </div>
     );
@@ -131,7 +169,10 @@ const Step = props => {
   return (
     <div className="lineItem" style={style}>
       <span>{props.instruction}</span>
-      <input type="checkbox" disabled={!props.active} />
+      <input
+        type="checkbox"
+        disabled={props.status == "incomplete" || props.status == "complete"}
+      />
     </div>
   );
 };

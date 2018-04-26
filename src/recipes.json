@@ -13,6 +13,20 @@
         "Insert plunger and press down",
         "Add more hot water and half and half to taste"
       ]
+    },
+    {
+      "name": "Drip",
+      "steps": [
+        "Weigh out 30g of whole bean coffee",
+        "Heat water to 205°F",
+        "Grind coffee beans to medium consistency",
+        "Dump coffee grounds into filter basket",
+        "Place AeroPress on your favorite mug",
+        "Pour heated water into brewing chamber up to the '2' marker",
+        "Brew for 15 seconds...no more, no less",
+        "Insert plunger and press down",
+        "Add more hot water and half and half to taste"
+      ]
     }
   ]
 }
