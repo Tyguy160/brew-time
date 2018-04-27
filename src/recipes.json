@@ -3,15 +3,42 @@
     {
       "name": "AeroPress",
       "steps": [
-        "Weigh out 30g of whole bean coffee",
-        "Heat water to 205°F",
-        "Grind coffee beans to medium consistency",
-        "Dump coffee grounds into filter basket",
-        "Place AeroPress on your favorite mug",
-        "Pour heated water into brewing chamber up to the '2' marker",
-        "Brew for 15 seconds...no more, no less",
-        "Insert plunger and press down",
-        "Add more hot water and half and half to taste"
+        {
+          "step": "Weigh out 30g of whole bean coffee",
+          "image": "coffee-beans.png"
+        },
+        {
+          "step": "Heat water to 205°F",
+          "image": "coffee-beans.png"
+        },
+        {
+          "step": "Grind coffee beans to medium consistency",
+          "image": "coffee-beans.png"
+        },
+        {
+          "step": "Dump coffee grounds into filter basket",
+          "image": "coffee-beans.png"
+        },
+        {
+          "step": "Place AeroPress on your favorite mug",
+          "image": "coffee-beans.png"
+        },
+        {
+          "step": "Pour heated water into brewing chamber up to the '2' marker",
+          "image": "coffee-beans.png"
+        },
+        {
+          "step": "Brew for 15 seconds...no more, no less",
+          "image": "coffee-beans.png"
+        },
+        {
+          "step": "Insert plunger and press down",
+          "image": "coffee-beans.png"
+        },
+        {
+          "step": "Add more hot water and half and half to taste",
+          "image": "coffee-beans.png"
+        }
       ]
     },
     {

@@ -129,8 +129,8 @@ class Directions extends Component {
       const steps = recipe.steps.map(
         (step, i) =>
           i === 0
-            ? { instruction: step, status: "active" }
-            : { instruction: step, status: "incomplete" }
+            ? { instruction: step.step, image: step.image, status: "active" }
+            : { instruction: step.step, image: step.image, status: "incomplete" }
       );
       return { name: recipe.name, steps };
     });
@@ -148,6 +148,7 @@ class Directions extends Component {
                 <Step
                   key={i}
                   instruction={step.instruction}
+                  image={step.image}
                   status={step.status}
                 />
               ))
@@ -173,6 +174,7 @@ const Step = props => {
         type="checkbox"
         disabled={props.status == "incomplete" || props.status == "complete"}
       />
+      {/* <img src={props.image} alt={props.instruction}/> */}
     </div>
   );
 };
