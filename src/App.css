@@ -121,15 +121,37 @@ button {
 .instructions {
   display: grid;
 
-  grid-template-rows: repeat(auto-fill, minmax(40px, 1fr));
+  grid-template-rows: repeat(auto-fill, minmax(1fr, 1fr));
   grid-template-columns: 1fr;
+}
+
+.lineItem {
+  display: grid;
+
+  background: #777777;
+  min-height: 40px;
+
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 40px 1fr;
+
+  align-items: center;
 }
 
 .lineItem:nth-child(even) {
   background: #555555;
+  display: grid;
 }
 
-.lineItem {
-  background: #777777;
-  min-height: 40px;
+.instruction-text {
+  grid-column: 1 / 2;
+  margin-left: 20px;
+}
+
+.instruction-checkbox {
+  grid-column: 2 / -1;
+}
+
+.instruction-image {
+  grid-column: 1 / -1;
+  justify-self: center;
 }

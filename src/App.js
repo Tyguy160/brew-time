@@ -124,6 +124,15 @@ class Directions extends Component {
     recipes: []
   };
 
+  constructor() {
+    super();
+    this.createImage = this.createImage.bind(this);
+  }
+
+  createImage(image) {
+    return <Image source={image} key={image} />;
+  };
+
   componentDidMount() {
     let recipesToBeLoaded = data.recipes.map(recipe => {
       const steps = recipe.steps.map(
@@ -148,7 +157,7 @@ class Directions extends Component {
                 <Step
                   key={i}
                   instruction={step.instruction}
-                  image={step.image}
+                  image={this.createImage(step.image)}
                   status={step.status}
                 />
               ))
@@ -161,21 +170,35 @@ class Directions extends Component {
 
 // Step component
 const Step = props => {
-  const style = {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center"
+  // const style = {
+  //   display: "flex",
+  //   justifyContent: "space-between",
+  //   alignItems: "center"
+  // };
+
+
+
+  return (
+    <div className="lineItem" /*style={style}*/>
+      <span className="instruction-text">{props.instruction}</span>
+      <span className="instruction-checkbox">
+        <input
+        type="checkbox"
+        disabled={props.status == "incomplete" || props.status == "complete"}
+        />
+      </span>
+      <span className="instruction-image">{props.image}</span>
+    </div>
+  );
+};
+
+let Image = function statelessFunctionComponentClass(props) {
+  let style = {
+    // width: '100%',
   };
 
   return (
-    <div className="lineItem" style={style}>
-      <span>{props.instruction}</span>
-      <input
-        type="checkbox"
-        disabled={props.status == "incomplete" || props.status == "complete"}
-      />
-      {/* <img src={props.image} alt={props.instruction}/> */}
-    </div>
+    <img src={require('./images/' + props.source)} style={style} />
   );
 };
 
