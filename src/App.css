@@ -153,5 +153,5 @@ button {
 
 .instruction-image {
   grid-column: 1 / -1;
-  justify-self: center;
+  /* justify-self: center; */
 }

@@ -181,24 +181,24 @@ const Step = props => {
   return (
     <div className="lineItem" /*style={style}*/>
       <span className="instruction-text">{props.instruction}</span>
-      <span className="instruction-checkbox">
         <input
         type="checkbox"
+        className="instruction-checkbox"
         disabled={props.status == "incomplete" || props.status == "complete"}
         />
-      </span>
-      <span className="instruction-image">{props.image}</span>
+      {props.image}
     </div>
   );
 };
 
 let Image = function statelessFunctionComponentClass(props) {
   let style = {
-    // width: '100%',
+    // visibility: (props.status === "incomplete") ? 'hidden' : 'hidden',
+    width: '100%'
   };
 
   return (
-    <img src={require('./images/' + props.source)} style={style} />
+    <img className="instruction-image" src={require('./images/' + props.source)} style={style} />
   );
 };
 
