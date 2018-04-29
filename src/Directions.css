@@ -1,0 +1,47 @@
+.directions {
+  background: rgb(51, 51, 51);
+  margin: 20px;
+  box-shadow: 8px 9px 27px -2px rgba(0, 0, 0, 0.86);
+  color: #ffffff;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 50px 1fr;
+}
+
+.instructions {
+  display: grid;
+
+  grid-template-rows: repeat(auto-fill, minmax(1fr, 1fr));
+  grid-template-columns: 1fr;
+}
+
+.lineItem {
+  display: grid;
+
+  background: #777777;
+  min-height: 40px;
+
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 40px 1fr;
+
+  align-items: center;
+}
+
+.lineItem:nth-child(even) {
+  background: #555555;
+  display: grid;
+}
+
+.instruction-text {
+  grid-column: 1 / 2;
+  margin-left: 20px;
+}
+
+.instruction-checkbox {
+  grid-column: 2 / -1;
+}
+
+.instruction-image {
+  grid-column: 1 / -1;
+}

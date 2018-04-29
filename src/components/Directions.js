@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "../App.css";
+import "../Directions.css";
 import data from "../recipes.json";
 
 // Directions component
