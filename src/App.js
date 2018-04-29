@@ -170,31 +170,31 @@ class Directions extends Component {
 
 // Step component
 const Step = props => {
-  // const style = {
-  //   display: "flex",
-  //   justifyContent: "space-between",
-  //   alignItems: "center"
-  // };
 
+  function toggleActive() {
+    // if (this.checked) {
+    console.log("Hello")
+    // }
+  }
 
 
   return (
-    <div className="lineItem" /*style={style}*/>
+    <div className="lineItem">
       <span className="instruction-text">{props.instruction}</span>
         <input
         type="checkbox"
         className="instruction-checkbox"
         disabled={props.status == "incomplete" || props.status == "complete"}
+        onClick={toggleActive}
         />
       {props.image}
     </div>
   );
 };
 
-let Image = function statelessFunctionComponentClass(props) {
+let Image = function generateImage(props) {
   let style = {
-    // visibility: (props.status === "incomplete") ? 'hidden' : 'hidden',
-    width: '100%'
+    maxWidth: '100%'
   };
 
   return (
