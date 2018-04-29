@@ -1,6 +1,21 @@
 import React, { Component } from "react";
 import "../Directions.css";
 import data from "../recipes.json";
+import Step from "./Step"
+
+let Image = function generateImage(props) {
+  let style = {
+    maxWidth: '100%'
+  };
+
+  return (
+    <img
+      className="instruction-image"
+      src={require('../images/' + props.source)}
+      style={style}
+    />
+  );
+};
 
 // Directions component
 class Directions extends Component {
@@ -51,39 +66,5 @@ class Directions extends Component {
     );
   }
 }
-
-// Step component
-const Step = props => {
-
-  function toggleActive() {
-    // if (this.checked) {
-    console.log("Hello")
-    // }
-  }
-
-
-  return (
-    <div className="lineItem">
-      <span className="instruction-text">{props.instruction}</span>
-        <input
-        type="checkbox"
-        className="instruction-checkbox"
-        disabled={props.status == "incomplete" || props.status == "complete"}
-        onClick={toggleActive}
-        />
-      {props.image}
-    </div>
-  );
-};
-
-let Image = function generateImage(props) {
-  let style = {
-    maxWidth: '100%'
-  };
-
-  return (
-    <img className="instruction-image" src={require('../images/' + props.source)} style={style} />
-  );
-};
 
 export default Directions;
