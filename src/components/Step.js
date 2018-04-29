@@ -4,10 +4,36 @@ import "../styles/Step.css";
 // Step component
 class Step extends Component {
 
-  toggleActive() {
-    // if (this.checked) {
-    console.log("Hello")
+  // state = {
+  //   isActive: false,
+  //   isComplete: false
+  // };
+
+  // constructor() {
+  //   super();
+  //   this.toggleComplete = this.toggleComplete.bind(this);
+  // }
+
+  toggleComplete() {
+    // console.log(this.props.status)
+    // if (this.state.isActive) {
+    //   this.setState(prevState => {
+    //     console.log(this.props.instruction + ` is complete!`)
+    //     return {isActive: false, isComplete: true}
+    //   })
     // }
+    // else if (this.state.isComplete){
+    //   this.setState(prevState => {
+    //     console.log(this.props.instruction + ` is NOT complete!`)
+    //     return {isActive: true, isComplete: false}
+    //   })
+    // }
+  }
+
+  componentDidMount() {
+    // this.setState({
+    //   isActive: this.props.status
+    // })
   }
 
   render() {
@@ -17,8 +43,9 @@ class Step extends Component {
           <input
           type="checkbox"
           className="instruction-checkbox"
-          disabled={this.props.status == "incomplete" || this.props.status == "complete"}
-          onClick={this.toggleActive}
+          disabled={!this.props.isActive}
+          onClick={this.toggleComplete}
+          // checked={this.props.isComplete}
           />
         {this.props.image}
       </div>
