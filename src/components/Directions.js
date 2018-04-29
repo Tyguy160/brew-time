@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "../Directions.css";
+import "../styles/Directions.css";
 import data from "../recipes.json";
 import Step from "./Step"
 
