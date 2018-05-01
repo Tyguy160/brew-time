@@ -37,10 +37,11 @@ class Directions extends Component {
 
   toggleComplete(i) {
     const currState = { ...this.state.recipes };
+    const { steps } = currState[this.state.activeRecipe];
+    const checking = !!steps[i].isActive;
     const newRecipeState = currState[this.state.activeRecipe].steps.map(
       (step, index) => {
-        console.log(step);
-        if (true) {
+        if (checking) {
           if (index === i) {
             return {
               ...step,
