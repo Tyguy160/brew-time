@@ -26,5 +26,5 @@
 
 .instruction-image {
   grid-column: 1 / -1;
-  max-height: 0px;
+  /* max-height: 0px; */
 }
