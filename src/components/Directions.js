@@ -5,13 +5,14 @@ import data from "../recipes.json";
 
 let Image = function generateImage(props) {
   let style = {
-    maxWidth: '100%'
+    maxWidth: "100%"
   };
 
   return (
     <img
+      alt=""
       className="instruction-image"
-      src={require('../images/' + props.source)}
+      src={require("../images/" + props.source)}
       style={style}
     />
   );
@@ -20,6 +21,7 @@ let Image = function generateImage(props) {
 // Directions component
 class Directions extends Component {
   state = {
+    activeRecipe: 0,
     recipes: []
   };
 
@@ -31,10 +33,49 @@ class Directions extends Component {
 
   createImage(image) {
     return <Image source={image} key={image} />;
-  };
+  }
 
-  toggleComplete() {
-
+  toggleComplete(i) {
+    const currState = { ...this.state.recipes };
+    const newRecipeState = currState[this.state.activeRecipe].steps.map(
+      (step, index) => {
+        console.log(step);
+        if (true) {
+          if (index === i) {
+            return {
+              ...step,
+              isActive: false,
+              isComplete: true,
+              lastComplete: true
+            };
+          } else if (index === i + 1) {
+            return { ...step, isActive: true };
+          } else if (index === i - 1) {
+            return { ...step, lastComplete: false };
+          } else {
+            return step;
+          }
+        } else {
+          if (index === i) {
+            return {
+              ...step,
+              isActive: true,
+              isComplete: false,
+              lastComplete: false
+            };
+          } else if (index === i + 1) {
+            return { ...step, isActive: false };
+          } else if (index === i - 1) {
+            return { ...step, lastComplete: true };
+          } else {
+            return step;
+          }
+        }
+      }
+    );
+    currState[this.state.activeRecipe].steps = newRecipeState;
+    this.setState({ recipes: currState });
+    // currState;
   }
 
   componentDidMount() {
@@ -42,8 +83,18 @@ class Directions extends Component {
       const steps = recipe.steps.map(
         (step, i) =>
           i === 0
-            ? { instruction: step.step, image: step.image, isActive: true }
-            : { instruction: step.step, image: step.image, isActive: false }
+            ? {
+                instruction: step.step,
+                image: step.image,
+                isActive: true,
+                isComplete: false
+              }
+            : {
+                instruction: step.step,
+                image: step.image,
+                isActive: false,
+                isComplete: false
+              }
       );
       return { name: recipe.name, steps };
     });
@@ -51,7 +102,7 @@ class Directions extends Component {
   }
 
   render() {
-    const recipe = this.state.recipes[0];
+    const recipe = this.state.recipes[this.state.activeRecipe];
     return (
       <div className="directions">
         <h3>{recipe ? recipe.steps.name : "Loading"} Directions</h3>
@@ -67,13 +118,13 @@ class Directions extends Component {
                 // />
                 <div className="lineItem" key={i}>
                   <span className="instruction-text">{step.instruction}</span>
-                    <input
+                  <input
                     type="checkbox"
                     className="instruction-checkbox"
-                    disabled={!step.isActive}
-                    onClick={this.toggleComplete}
+                    disabled={!step.isActive && !step.lastComplete}
+                    onClick={() => this.toggleComplete(i)}
                     // checked={this.props.isComplete}
-                    />
+                  />
                   {this.createImage(step.image)}
                 </div>
               ))
