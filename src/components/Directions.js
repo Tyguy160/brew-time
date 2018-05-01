@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "../styles/Directions.css";
 import data from "../recipes.json";
-// import Step from "./Step"
+import Step from "./Step"
 
 let Image = function generateImage(props) {
   let style = {
@@ -110,24 +110,16 @@ class Directions extends Component {
         <div className="instructions">
           {recipe
             ? recipe.steps.map((step, i) => (
-                // <Step
-                //   key={i}
-                //   instruction={step.instruction}
-                //   image={this.createImage(step.image)}
-                //   isActive={step.isActive}
-                //   isComplete={step.isComplete}
-                // />
-                <div className="lineItem" key={i}>
-                  <span className="instruction-text">{step.instruction}</span>
-                  <input
-                    type="checkbox"
-                    className="instruction-checkbox"
-                    disabled={!step.isActive && !step.lastComplete}
-                    onClick={() => this.toggleComplete(i)}
-                    // checked={this.props.isComplete}
-                  />
-                  {this.createImage(step.image)}
-                </div>
+                <Step
+                  key={i}
+                  instruction={step.instruction}
+                  image={this.createImage(step.image)}
+                  isActive={step.isActive}
+                  isComplete={step.isComplete}
+                  clickHandler={this.toggleComplete}
+                  lastComplete={step.lastComplete}
+                  id={i}
+                />
               ))
             : "loading"}
         </div>
