@@ -10,8 +10,15 @@
 }
 
 .instructions {
-  display: grid;
+  /* max-height: 80vh; */
+  /* overflow-y: auto; */
+}
 
-  grid-template-rows: repeat(auto-fill, minmax(1fr, 1fr));
-  grid-template-columns: 1fr;
+@media only screen and (max-width: 800px) {
+  /* .directions {
+    max-height: 50vh;
+  }
+  .instructions {
+    overflow-y: scroll;
+  } */
 }

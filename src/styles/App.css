@@ -24,11 +24,10 @@ h3 {
   align-self: center;
   justify-self: center;
   font-weight: 500;
-  font-size: 24px;
+  font-size: 28px;
 }
 
 .container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-  /* align-self: center; */
 }
