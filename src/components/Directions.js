@@ -3,21 +3,6 @@ import "../styles/Directions.css";
 import data from "../recipes.json";
 import Step from "./Step"
 
-let Image = function generateImage(props) {
-  let style = {
-    maxWidth: "100%"
-  };
-
-  return (
-    <img
-      alt=""
-      className="instruction-image"
-      src={require("../images/" + props.source)}
-      style={style}
-    />
-  );
-};
-
 // Directions component
 class Directions extends Component {
   state = {
@@ -27,12 +12,7 @@ class Directions extends Component {
 
   constructor() {
     super();
-    this.createImage = this.createImage.bind(this);
     this.toggleComplete = this.toggleComplete.bind(this);
-  }
-
-  createImage(image) {
-    return <Image source={image} key={image} />;
   }
 
   toggleComplete(i) {
@@ -113,7 +93,7 @@ class Directions extends Component {
                 <Step
                   key={i}
                   instruction={step.instruction}
-                  image={this.createImage(step.image)}
+                  image={step.image}
                   isActive={step.isActive}
                   isComplete={step.isComplete}
                   clickHandler={this.toggleComplete}
