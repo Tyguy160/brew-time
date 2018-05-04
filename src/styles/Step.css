@@ -5,7 +5,7 @@
   min-height: 50px;
 
   grid-template-columns: 1fr 10%;
-  grid-template-rows: minmax(40px, 1fr);
+  grid-template-rows: minmax(50px, 1fr);
 
   align-items: center;
 }
