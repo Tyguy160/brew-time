@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import "../styles/Directions.css";
 import data from "../recipes.json";
 import Step from "./Step"
+import 'simplebar'
+import 'simplebar/dist/simplebar.css'
 
 // Directions component
 class Directions extends Component {
@@ -87,7 +89,7 @@ class Directions extends Component {
     return (
       <div className="directions">
         <h3>{recipe ? recipe.steps.name : "Loading"} Directions</h3>
-        <div className="instructions">
+        <div className="instructions" data-simplebar="init">
           {recipe
             ? recipe.steps.map((step, i) => (
                 <Step
