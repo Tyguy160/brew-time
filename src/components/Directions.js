@@ -85,7 +85,7 @@ class Directions extends Component {
     const recipe = this.state.recipes[this.state.activeRecipe];
     return (
       <div className="directions">
-        <h3>{recipe ? recipe.steps.name : "Loading"} Directions</h3>
+        <h3>{recipe ? recipe.name : "Loading"} Directions</h3>
         <div className="instructions">
           {recipe
             ? recipe.steps.map((step, i) => (
