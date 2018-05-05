@@ -5,16 +5,19 @@ import '../../node_modules/mdi/css/materialdesignicons.css'
 
 let Image = function generateImage(props) {
   let style = {
-    maxWidth: "100%"
+    maxWidth: "100%",
+    verticalAlign: "middle"
   };
 
   return (
-    <img
-      alt=""
-      className={props.classes.join(" ")}
-      src={require("../images/" + props.source)}
-      style={style}
-    />
+    <div className="image-container">
+      <img
+        alt=""
+        className={props.classes.join(" ")}
+        src={require("../images/" + props.source)}
+        style={style}
+      />
+    </div>
   );
 };
 

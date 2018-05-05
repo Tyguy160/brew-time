@@ -26,7 +26,7 @@
   grid-column: 2 / -1;
 }
 
-.instruction-image {
+.image-container {
   grid-column: 1 / -1;
 }
 
@@ -34,5 +34,7 @@
   display: none;
 }
 
-.active {
+.pretty {
+  align-self: center;
+  justify-self: right;
 }

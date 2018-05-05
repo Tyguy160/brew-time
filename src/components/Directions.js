@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import "../styles/Directions.css";
 import data from "../recipes.json";
 import Step from "./Step"
-import 'simplebar'
-import 'simplebar/dist/simplebar.css'
 
 // Directions component
 class Directions extends Component {
@@ -58,7 +56,6 @@ class Directions extends Component {
     );
     currState[this.state.activeRecipe].steps = newRecipeState;
     this.setState({ recipes: currState });
-    // currState;
   }
 
   componentDidMount() {
@@ -89,7 +86,7 @@ class Directions extends Component {
     return (
       <div className="directions">
         <h3>{recipe ? recipe.steps.name : "Loading"} Directions</h3>
-        <div className="instructions" data-simplebar="init">
+        <div className="instructions">
           {recipe
             ? recipe.steps.map((step, i) => (
                 <Step
