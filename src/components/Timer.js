@@ -109,7 +109,7 @@ class Timer extends Component {
             className="resetButton"
             onClick={this.resetTimer}
           >
-            Reset
+          Reset
           </button>
         </div>
       </div>
