@@ -5,6 +5,8 @@
   "dependencies": {
     "ajv": "^6.4.0",
     "gulp": "^3.9.1",
+    "mdi": "^2.2.43",
+    "npm": "^6.0.0",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
     "simplebar": "^2.6.1"
@@ -16,7 +18,6 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
-    "material-design-icons": "^3.0.1",
     "pretty-checkbox": "^3.0.3",
     "react-scripts": "^1.1.4"
   }

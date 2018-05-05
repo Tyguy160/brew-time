@@ -8,6 +8,7 @@
   grid-template-columns: minmax(150px, 1fr);
   grid-template-rows: 80px 1fr;
   font-family: "Montserrat", sans-serif;
+  overflow: hidden;
 }
 .nav {
   background: rgb(51, 51, 51);

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "../styles/Step.css";
 import 'pretty-checkbox'
-import 'material-design-icons'
+import '../../node_modules/mdi/css/materialdesignicons.css'
 
 let Image = function generateImage(props) {
   let style = {
@@ -29,7 +29,7 @@ class Step extends Component {
     return (
       <div className="lineItem" key={this.props.key}>
         <span className="instruction-text">{this.props.instruction}</span>
-          <div className="pretty p-default p-round p-pulse">
+          <div className="pretty p-icon p-round p-smooth">
             <input
             type="checkbox"
             className="instruction-checkbox"
@@ -37,7 +37,7 @@ class Step extends Component {
             onClick={() => this.props.clickHandler(this.props.id)}
             />
             <div className="state p-success">
-              <i className="icon material-icons"></i>
+              <i className="icon mdi mdi-check"></i>
               <label></label>
             </div>
           </div>
