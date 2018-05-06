@@ -4,40 +4,52 @@
       "name": "AeroPress",
       "steps": [
         {
+          "step": "Gather all of your equipment",
+          "image": "aeropress-recipe-step-1.png"
+        },
+        {
           "step": "Weigh out 30g of whole bean coffee",
-          "image": "image1.jpg"
+          "image": "aeropress-recipe-step-2.png"
         },
         {
           "step": "Heat water to 205°F",
-          "image": "image2.jpg"
+          "image": "aeropress-recipe-step-3.png"
         },
         {
           "step": "Grind coffee beans to medium consistency",
-          "image": "image3.jpg"
+          "image": "aeropress-recipe-step-4.png"
         },
         {
-          "step": "Dump coffee grounds into filter basket",
-          "image": "image4.jpg"
+          "step": "Insert a paper filter into your AeroPress filter basket",
+          "image": "aeropress-recipe-step-5.png"
         },
         {
-          "step": "Place AeroPress on your favorite mug",
-          "image": "image5.jpg"
+          "step": "Dump the coffee grounds into the filter basket and place the AeroPress on your favorite mug",
+          "image": "aeropress-recipe-step-6.png"
         },
         {
-          "step": "Pour heated water into brewing chamber up to the ② marker",
-          "image": "image6.jpg"
+          "step": "Pour the heated water into the brewing chamber up to the ② marker",
+          "image": "aeropress-recipe-step-7.png"
         },
         {
           "step": "Brew for 15 seconds...no more, no less",
-          "image": "image7.jpg"
+          "image": "aeropress-recipe-step-8.png"
         },
         {
-          "step": "Insert plunger and press down",
-          "image": "image1.jpg"
+          "step": "Stir the coffee with a spoon or coffee stirrer",
+          "image": "aeropress-recipe-step-9.png"
+        },
+        {
+          "step": "Insert plunger and press down until the plunger reaches the coffee grounds",
+          "image": "aeropress-recipe-step-10.png"
         },
         {
           "step": "Add more hot water and half and half to taste",
-          "image": "image2.jpg"
+          "image": "aeropress-recipe-step-11.png"
+        },
+        {
+          "step": "Enjoy sipping on your freshly brewed AeroPress coffee",
+          "image": "aeropress-recipe-step-12.png"
         }
       ]
     },
